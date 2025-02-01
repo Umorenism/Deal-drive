@@ -16,9 +16,14 @@ const DoubleCard = () => {
         <div className="flex flex-col justify-center items-center text-start p-8 md:p-12 bg-[#173B3F]">
           <h1 className="text-3xl text-center font-bold">GET STARTED</h1>
           <p className="mt-2 text-lg">Build the tech team of the future with Andela.</p>
-          <button className="mt-10 px-10 text-center py-3 bg-indigo-500 rounded-md text-lg font-semibold hover:bg-indigo-600 transition hidden md:block">
+          <div className='flex'>
+          <button className="mt-10 md:px-10 px-4 text-center py-3 bg-indigo-500 rounded-md text-lg font-semibold hover:bg-indigo-600 transition  md:block">
             Hire Talent
           </button>
+          <button className="mt-10 md:px-10 px-4 text-center py-3 bg-white text-slate-600 rounded-md text-lg font-semibold hover:bg-white transition  md:block">
+            Schedule Now
+          </button>
+          </div>
         </div>
 
         {/* Right Section */}
