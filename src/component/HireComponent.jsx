@@ -100,6 +100,9 @@ const HireComponent = () => {
       ))}
     </div>
   </div>
+  <div className="mt-6">
+    <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/66f4489d0ee5b6674d819f77_G2%20Fall%202024%20Demo%20Page%20(1).svg" alt="" />
+  </div>
 </div>
 
 
