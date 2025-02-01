@@ -68,11 +68,11 @@ const HireComponent = () => {
     }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#D8ECE9] px-6">
+    <div className=" flex items-center md:justify-center bg-[#D8ECE9] px-6">
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-12">
         {/* Left Section - Content */}
-       <div className="flex flex-col justify-center md:justify-start mt-[500px] md:mt-0 text-center md:text-left relative">
-  <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight mt-44">
+       <div className="flex flex-col justify-center md:justify-start md:mt-[100px] text-center md:text-left relative">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight md:mt-44 mt-0">
     Request A Demo
   </h1>
   <p className="text-lg mb-5 text-black max-w-lg mx-auto md:mx-0">
@@ -82,15 +82,15 @@ const HireComponent = () => {
   </p>
 
   {/* Stats Section */}
-  <div className="absolute md:relative bottom-0 w-full flex justify-center md:justify-start ">
-    <div className="flex gap-8 md:gap-16">
+  <div className="absolute md:relative flex-col bottom-0 w-full flex justify-center md:justify-start ">
+    <div className="flex gap-8 md:gap-16 mb-10">
       {stats.map((stat, index) => (
         <div key={index} className="flex items-center space-x-4">
           {/* Vertical Divider */}
           <div className="w-1 h-16 bg-black"></div>
           
           {/* Stat Content */}
-          <div>
+          <div >
             <h1 className="text-2xl md:text-3xl font-bold text-black">
               {counts[index].toLocaleString()} {index === 0 ? "$" : "%"}
             </h1>
@@ -99,15 +99,16 @@ const HireComponent = () => {
         </div>
       ))}
     </div>
-  </div>
-  <div className="mt-6">
+    <div className="mt-6">
     <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/66f4489d0ee5b6674d819f77_G2%20Fall%202024%20Demo%20Page%20(1).svg" alt="" />
   </div>
+  </div>
+  
 </div>
 
 
         {/* Right Section - Hiring Form */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 mt-24 mb-20">
+        <div className="bg-white shadow-lg rounded-2xl p-8 md:mt-24 mb-20">
           <h2 className="text-xl font-semibold mb-6 text-center">Hire Talent</h2>
           <form className="space-y-4">
             <div>
