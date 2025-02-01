@@ -47,7 +47,7 @@ const Footer = () => {
   
         {/* Footer Bottom */}
         <div className="text-center text-gray-500 text-sm mt-6">
-          &copy; {new Date().getFullYear()} YourCompany. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Deal Drive. All Rights Reserved.
         </div>
       </footer>
     );
