@@ -77,7 +77,7 @@ const Navbar = () => {
             }`}
           />
           <IoSearch
-            className={`text-black text-xl hidden md:block cursor-pointer hover:text-indigo-500 transition-colors ${
+            className={`text-black text-xl  md:block cursor-pointer hover:text-indigo-500 transition-colors ${
               scrolling ? "text-black" : "text-white"
             }`}
           />
