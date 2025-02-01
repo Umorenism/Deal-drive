@@ -128,6 +128,7 @@
 import React, { useState, useEffect } from 'react';
 import Tech from './Tech';
 import Hire from './Hire';
+import Card from './Card';
 
 const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -233,7 +234,7 @@ const HomePage = () => {
     <Tech/>
     <Hire/>
     <div>
-      
+      <Card/>
     </div>
     </>
   );
