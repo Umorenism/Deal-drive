@@ -28,7 +28,7 @@ const HomeCard = () => {
         {cardData.map((card) => (
           <div
             key={card.id}
-            className="group w-full border border-[#1B454A] bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:bg-[#1B454A] hover:text-white h-[400px] flex flex-col"
+            className="group w-full border border-[#1B454A] bg-white shadow-2xl hover:shadow-blue-600 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:bg-[#1B454A] hover:text-white h-[400px] flex flex-col"
           >
             <img className="w-full h-48 object-cover" src={card.image} alt={card.title} />
             <div className="p-6 flex flex-col flex-grow">
