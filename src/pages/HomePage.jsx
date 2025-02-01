@@ -14,7 +14,7 @@ import Footer from "../component/Footer";
 
 const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
-  
+  const [counts, setCounts] = useState([0, 0, 0, 0]); // Initial count state
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,35 +28,40 @@ const HomePage = () => {
   }, []);
 
   const stats = [
-    {
-      value: "150K",
-      description: "Top-rated, highly skilled global talent pool",
-    },
-    {
-      value: "$80,000",
-      description: "Cost savings per talent hired through Andela",
-    },
-    {
-      value: "66%",
-      description: "Faster time to hire",
-    },
-    {
-      value: "33%",
-      description: "Faster project delivery",
-    },
+    { value: 150000, description: "Top-rated, highly skilled global talent pool" },
+    { value: 80000, description: "Cost savings per talent hired through Andela" },
+    { value: 66, description: "Faster time to hire" },
+    { value: 33, description: "Faster project delivery" },
   ];
+
+  // Function to animate count
+  useEffect(() => {
+    const durations = [2000, 2000, 1500, 1500]; // Duration for each count animation
+    stats.forEach((stat, index) => {
+      let start = 0;
+      const end = stat.value;
+      const increment = Math.ceil(end / (durations[index] / 50)); // Adjust speed
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          start = end;
+          clearInterval(timer);
+        }
+        setCounts((prevCounts) => {
+          const newCounts = [...prevCounts];
+          newCounts[index] = start;
+          return newCounts;
+        });
+      }, 50);
+    });
+  }, []);
 
   return (
     <>
-      <Navbar/> 
+      <Navbar />
       <div className="relative w-full h-screen md:min-h-[600px] overflow-hidden">
         {!isMobile ? (
-          <video
-            autoPlay
-            loop
-            muted
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          >
+          <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
             <source src="https://videos.pexels.com/video-files/1350205/1350205-sd_640_360_30fps.mp4" />
             Your browser does not support the video tag.
           </video>
@@ -74,11 +79,10 @@ const HomePage = () => {
               Adaptive Hiring Lets You Put Every Project on the Front Burner
             </h1>
             <p className="text-lg md:text-xl mb-6 max-w-[100%] mx-auto">
-              There are more than 150,000 highly skilled tech professionals on
-              our roster. Most in largely untapped markets. Ready to be placed
-              quickly and effectively.
+              There are more than 150,000 highly skilled tech professionals on our roster.
+              Most in largely untapped markets. Ready to be placed quickly and effectively.
             </p>
-            <div className="flex mb-24 items-center  md:items-start gap-4 mt-5">
+            <div className="flex mb-24 items-center md:items-start gap-4 mt-5">
               <button className="px-10 py-4 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition">
                 Hire Talent
               </button>
@@ -96,7 +100,9 @@ const HomePage = () => {
                 <div key={index} className="flex items-center mb-4 gap-4">
                   <div className="w-1 h-16 bg-slate-100"></div>
                   <div>
-                    <h1 className="text-2xl md:text-3xl font-bold text-white">{stat.value}</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-white">
+                      {counts[index].toLocaleString()} {index === 1 ? "$" : ""}
+                    </h1>
                     <h2 className="text-sm text-gray-300">{stat.description}</h2>
                   </div>
                 </div>
@@ -106,37 +112,19 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div>
-        <Tech />
+      <Tech />
+      <Hire />
+      <Card />
+      <div className="w-full">
+        <SliderCard />
       </div>
-   <div>
-    <Hire/>
-   </div>
-   <div>
-    <Card/>
-   </div>
-   <div className="w-full">
-    <SliderCard/>
-   </div>
-   <div className="w-full">
-    <Works/>
-   </div>
-   <div className="w-full">
-    <Demo/>
-   </div>
-   <div className="w-full">
-    <AiCard/>
-   </div>
-   <div className="w-full">
-    <AiReady/>
-   </div>
-   <div className="w-full">
-    <HomeCard/>
-   </div>
-   <div className="w-full">
-    <DoubleCard/>
-   </div>
-      <Footer/>
+      <Works />
+      <Demo />
+      <AiCard />
+      <AiReady />
+      <HomeCard />
+      <DoubleCard />
+      <Footer />
     </>
   );
 };
