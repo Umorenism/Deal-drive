@@ -4,7 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className="max-w-[1600px] mx-auto px-8 py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <h1 className="text-xl md:text-3xl  gap-3 text-indigo-600 flex items-center">
-            DEALDRIVE <p className=" hidden md:flex bg-slate-400 text-sm h-10 w-[0.1rem]"></p>
+           <Link to="/"> DEALDRIVE </Link><p className=" hidden md:flex bg-slate-400 text-sm h-10 w-[0.1rem]"></p>
           </h1>
 
           {/* Desktop Navigation */}
@@ -81,9 +81,11 @@ const Navbar = () => {
               scrolling ? "text-black" : "text-white"
             }`}
           />
-          <button className="px-4 py-2 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition hidden md:block">
+         <Link to="/hire">
+         <button className="px-4 py-2 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition hidden md:block">
             Hire Talent
           </button>
+         </Link>
 
           {/* Mobile Menu Button */}
           <button

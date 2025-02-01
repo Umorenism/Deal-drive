@@ -3,6 +3,8 @@ import "./index.css";
 
 import Navbar from "./component/Header";
 import HomePage from "./pages/HomePage";
+import HireComponent from "./component/HireComponent";
+import Footer from "./component/Footer";
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/hire" element={<HireComponent />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

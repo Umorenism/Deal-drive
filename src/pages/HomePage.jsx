@@ -10,7 +10,6 @@ import AiCard from "./AICard";
 import AiReady from "./AIReady";
 import HomeCard from "./HomeCard";
 import DoubleCard from "./DoubleCard";
-import Footer from "../component/Footer";
 
 const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -124,7 +123,7 @@ const HomePage = () => {
       <AiReady />
       <HomeCard />
       <DoubleCard />
-      <Footer />
+      
     </>
   );
 };
