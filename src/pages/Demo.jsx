@@ -1,5 +1,5 @@
 import React from 'react'
-import pic from '../assets/Ddrive filles/deal4.jpg'
+import pic from '../assets/Ddrive filles/dd.jpg'
 import {motion} from "framer-motion"
 const Demo = () => {
   return (
