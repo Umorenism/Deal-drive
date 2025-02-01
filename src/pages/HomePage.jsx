@@ -5,6 +5,9 @@ import Hire from "./Hire";
 import Card from "./Card";
 import SliderCard from "../component/SliderCard";
 import Works from "./Works";
+import Demo from "../pages/Demo";
+import AiCard from "./AICard";
+import AiReady from "./AIReady";
 
 
 const HomePage = () => {
@@ -115,6 +118,15 @@ const HomePage = () => {
    </div>
    <div className="w-full">
     <Works/>
+   </div>
+   <div className="w-full">
+    <Demo/>
+   </div>
+   <div className="w-full">
+    <AiCard/>
+   </div>
+   <div className="w-full">
+    <AiReady/>
    </div>
       
     </>

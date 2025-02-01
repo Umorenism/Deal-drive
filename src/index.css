@@ -7,3 +7,6 @@ html, body {
     height: 100%;
     margin: 0;
   }
+ .bg-img{
+  background-image: url("https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/66267a6ace2dc89639aa51bb_bg-pattern-1.svg");
+ }
