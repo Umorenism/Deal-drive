@@ -8,7 +8,9 @@ import Works from "./Works";
 import Demo from "../pages/Demo";
 import AiCard from "./AICard";
 import AiReady from "./AIReady";
-
+import HomeCard from "./HomeCard";
+import DoubleCard from "./DoubleCard";
+import Footer from "../component/Footer";
 
 const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -128,7 +130,13 @@ const HomePage = () => {
    <div className="w-full">
     <AiReady/>
    </div>
-      
+   <div className="w-full">
+    <HomeCard/>
+   </div>
+   <div className="w-full">
+    <DoubleCard/>
+   </div>
+      <Footer/>
     </>
   );
 };
