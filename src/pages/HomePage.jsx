@@ -129,6 +129,7 @@ import React, { useState, useEffect } from 'react';
 import Tech from './Tech';
 import Hire from './Hire';
 import Card from './Card';
+import SliderCard from '../component/SliderCard';
 
 const HomePage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -233,9 +234,9 @@ const HomePage = () => {
     </div>
     <Tech/>
     <Hire/>
-    <div>
       <Card/>
-    </div>
+      <SliderCard/>
+    
     </>
   );
 };
