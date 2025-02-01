@@ -232,6 +232,9 @@ const HomePage = () => {
     </div>
     <Tech/>
     <Hire/>
+    <div>
+      
+    </div>
     </>
   );
 };
