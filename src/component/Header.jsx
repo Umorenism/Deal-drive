@@ -59,7 +59,7 @@ const Navbar = () => {
               <button
                 key={index}
                 onClick={() => openModal(data.content)}
-                className={`text-white text-xl font-medium hover:text-indigo-400 transition-colors ${
+                className={`text-black text-xl font-medium hover:text-indigo-400 transition-colors ${
                   scrolling ? "text-slate-500" : "text-white"
                 }`}
               >
