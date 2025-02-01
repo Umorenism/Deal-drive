@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
-import { FaPlayCircle } from "react-icons/fa";
+// import { RxDotFilled } from "react-icons/rx";
+import { FaArrowLeft, FaArrowRight, FaPlayCircle } from "react-icons/fa";
 
 const SliderCard = () => {
   const slides = [
@@ -37,23 +37,24 @@ const SliderCard = () => {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    
     );
   };
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
+//   const goToSlide = (slideIndex) => {
+//     setCurrentIndex(slideIndex);
+//   };
 
   return (
     <div className="relative w-full h-[1000px] mx-auto px-4 py-16">
       {/* Background Image */}
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full bg-center bg-cover rounded-2xl duration-300 relative"
+        className="w-full h-full bg-center bg-cover rounded-2xl duration-300 relative "
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center text-white text-start p-6 rounded-2xl">
-          <div className="flex justify-between mt-20 items-center gap-16 md:max-w-[1200px]">
+          <div className="flex flex-col md:flex-row justify-between mt-40 items-center gap-16 md:max-w-[1200px]">
             <div className="flex flex-col">
               <h2 className="text-2xl md:text-2xl font-bold">{slides[currentIndex].title}</h2>
               <p className="mt-2 text-sm md:text-lg max-w-[600px]">{slides[currentIndex].description}</p>
@@ -65,7 +66,21 @@ const SliderCard = () => {
               onClick={() => setShowModal(true)}
             />
           </div>
+          <div className="absolute py-2 rounded-t-xl bottom-0 bg-gray-500 md:w-[80%] flex items-center w-full">
+            <div className="flex items-center justify-between w-full p-4">
+                <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/6626a4aab5ef0f1a627c9088_The_Weather_Company_IBM_Byline%202.svg" alt="" className="w-10 md:w-20" />
+                <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/6626a4aab5ef0f1a627c90c9_github-2.svg" alt="" className="w-10 md:w-24"  />
+                <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/6659ee55b2d22a4dbb215e5f_isg%2070%20x%2060.webp" alt="" className="w-12 md:w-24" />
+                <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/6659eea57ed3ef2c8d4b2225_nubula%20homepage%20logo.webp" alt="" className="w-15 md:w-32" />
+                <img src="https://cdn.prod.website-files.com/660dcc7f45ad8881324199b5/665b361fb0c42356c0ce7dff_Frame%201073715405.webp" alt="" className="w-10 md:w-32" />
+                <div className="flex items-center gap-4 md:hidden">
+                <FaArrowLeft size={20} onClick={prevSlide}/>
+                <FaArrowRight size={20}  onClick={nextSlide}/>
+                </div>
+            </div>
+          </div>
         </div>
+        
       </div>
 
       {/* Left Arrow */}
@@ -85,7 +100,7 @@ const SliderCard = () => {
       </div>
 
       {/* Dots Navigation */}
-      <div className="flex justify-center mt-4">
+      {/* <div className="flex justify-center mt-4">
         {slides.map((_, slideIndex) => (
           <RxDotFilled
             key={slideIndex}
@@ -95,7 +110,7 @@ const SliderCard = () => {
             onClick={() => goToSlide(slideIndex)}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Video Modal */}
       {showModal && (

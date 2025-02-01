@@ -4,6 +4,7 @@ import Navbar from "../component/Header";
 import Hire from "./Hire";
 import Card from "./Card";
 import SliderCard from "../component/SliderCard";
+import Works from "./Works";
 
 
 const HomePage = () => {
@@ -111,6 +112,9 @@ const HomePage = () => {
    </div>
    <div className="w-full">
     <SliderCard/>
+   </div>
+   <div className="w-full">
+    <Works/>
    </div>
       
     </>
