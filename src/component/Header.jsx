@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
+
+
+import { useState, useEffect, useRef } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import WhyDealdrive from "../headerModelComponent/WhyDealdrive";
+import Adaptive from "../headerModelComponent/Adaptive";
+import Solution from "../headerModelComponent/Solution";
+
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  
   const [activeModal, setActiveModal] = useState(null);
+
+  const modalRef = useRef(null); // Create a reference for the modal content
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,44 +28,113 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close modal if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    if (modalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [modalOpen]);
+
   const navdata = [
-    { title: "Why Deal Drive", content: "Content for Why Deal Drive" },
-    { title: "Adaptive Hiring", content: "Content for Adaptive Hiring" },
-    { title: "Solution", content: "Content for Solution" },
-    { title: "Platform", content: "Content for Platform" },
-    { title: "Resources", content: "Content for Resources" },
-    { title: "Talent", content: "Content for Talent" },
-    { title: "About", content: "Content for About" },
+    {
+      title: "Why Deal Drive",
+      content: (
+        <div>
+          <WhyDealdrive/>
+        </div>
+      ),
+    },
+    {
+      title: "Adaptive Hiring",
+      content: (
+        <div>
+          <Adaptive/>
+        </div>
+      ),
+    },
+    {
+      title: "Solution",
+      content: (
+        <div>
+          <Solution/>
+        </div>
+      ),
+    },
+    {
+      title: "Platform",
+      content: (
+        <div>
+          <h2 className="text-2xl font-bold text-purple-600 mb-4">Our Platform</h2>
+          <p className="text-gray-700">Seamless and scalable hiring experience for all businesses.</p>
+        </div>
+      ),
+    },
+    {
+      title: "Resources",
+      content: (
+        <div>
+          <h2 className="text-2xl font-bold text-yellow-600 mb-4">Valuable Resources center</h2>
+          <ul className="list-disc list-inside text-gray-700">
+            <li>Case Studies</li>
+            <li>Whitepapers</li>
+            <li>Webinars</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      title: "Talent",
+      content: (
+        <div>
+          <h2 className="text-2xl font-bold text-orange-600 mb-4">Top Talent for Your Business</h2>
+          <p className="text-gray-700">Find the best professionals to drive your growth.</p>
+        </div>
+      ),
+    },
+    {
+      title: "About",
+      content: (
+        <div>
+          <h2 className="text-2xl font-bold text-red-600 mb-4">About Deal Drive</h2>
+          <p className="text-gray-700">Revolutionizing talent acquisition through technology.</p>
+        </div>
+      ),
+    },
   ];
 
-  const openModal = (title) => {
-    setActiveModal(title);
+  const openModal = (data) => {
+    setActiveModal(data);
     setModalOpen(true);
   };
 
   const closeModal = () => {
     setModalOpen(false);
-    setTimeout(() => setActiveModal(null), 300); 
+    setTimeout(() => setActiveModal(null), 300);
   };
 
   return (
-    <header
-      className={`w-full fixed top-0 z-10 transition-all duration-300 ${
-        scrolling ? "bg-white shadow-md text-blue-500" : "bg-transparent"
-      }`}
-    >
+    <header className={`w-full fixed top-0 z-10 transition-all duration-300 ${scrolling ? "bg-white shadow-md text-blue-500" : "bg-transparent"}`}> 
       <div className="max-w-[1600px] mx-auto px-8 py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <h1 className="text-xl md:text-3xl  gap-3 text-indigo-600 flex items-center">
-           <Link to="/"> DEALDRIVE </Link><p className=" hidden md:flex bg-slate-400 text-sm h-10 w-[0.1rem]"></p>
+          <h1 className="text-xl md:text-3xl gap-3 text-indigo-600 flex items-center">
+            <Link to="/">DEALDRIVE</Link>
+            <p className="hidden md:flex bg-slate-400 text-sm h-10 w-[0.1rem]"></p>
           </h1>
-
-          {/* Desktop Navigation */}
           <nav className={`hidden md:flex space-x-6 ${scrolling ? "text-black" : "text-white"}`}>
             {navdata.map((data, index) => (
               <button
                 key={index}
-                onClick={() => openModal(data.content)}
+                onClick={() => openModal(data)}
                 className={`text-black text-xl font-medium hover:text-indigo-400 transition-colors ${
                   scrolling ? "text-slate-600" : "text-white"
                 }`}
@@ -69,27 +145,14 @@ const Navbar = () => {
           </nav>
         </div>
 
-        {/* Right Side Icons and Button */}
         <div className="flex items-center gap-4">
-          <FaRegUserCircle
-            className={`text-black text-xl hidden md:block cursor-pointer hover:text-indigo-500 transition-colors ${
-              scrolling ? "text-black" : "text-white"
-            }`}
-          />
-          <IoSearch
-            className={`text-black text-xl  md:block cursor-pointer hover:text-indigo-500 transition-colors ${
-              scrolling ? "text-black" : "text-white"
-            }`}
-          />
-         <Link to="/hire">
-         <button className="px-4 py-2 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition hidden md:block">
-            Hire Talent
-          </button>
-         </Link>
-
-          {/* Mobile Menu Button */}
+          <FaRegUserCircle className={`text-xl hidden md:block cursor-pointer hover:text-indigo-500 ${scrolling ? "text-black" : "text-white"}`} />
+          <IoSearch className={`text-xl md:block cursor-pointer hover:text-indigo-500 ${scrolling ? "text-black" : "text-white"}`} />
+          <Link to="/hire">
+            <button className="px-4 py-2 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition hidden md:block">Hire Talent</button>
+          </Link>
           <button
-            className={`md:hidden text-black text-2xl ${scrolling ? "text-black" : "text-white"}`}
+            className={`md:hidden text-2xl ${scrolling ? "text-black" : "text-white"}`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <IoMdClose /> : <GiHamburgerMenu />}
@@ -97,7 +160,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -110,101 +172,39 @@ const Navbar = () => {
             <div className="flex flex-col gap-6 p-6">
               <div className="flex justify-between items-center">
                 <h1 className="text-xl font-bold text-indigo-600">DEALDRIVE</h1>
-                <IoMdClose
-                  className="text-3xl cursor-pointer text-gray-600 hover:text-red-500 transition"
-                  onClick={() => setMenuOpen(false)}
-                />
+                <IoMdClose className="text-3xl cursor-pointer text-gray-600 hover:text-red-500" onClick={() => setMenuOpen(false)} />
               </div>
               <hr />
-
-              {/* Navigation Links */}
               {navdata.map((data, index) => (
                 <button
                   key={index}
-                  onClick={() => openModal(data.content)}
-                  className="text-black text-lg font-medium hover:text-indigo-500 transition-colors mb-4"
+                 
+                  className="text-lg font-medium hover:text-indigo-500 mb-4"
                 >
                   {data.title}
                   <hr />
                 </button>
               ))}
-              <button className="px-4 py-3 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600 transition">
-                Hire Talent
-              </button>
+              <button className="px-4 py-3 bg-indigo-500 rounded-md text-sm font-bold text-white hover:bg-indigo-600">Hire Talent</button>
             </div>
           </motion.nav>
         )}
       </AnimatePresence>
 
-      {/* Modal Component */}
-      {/* Modal Section */}
       <AnimatePresence>
-        {modalOpen && (
+        {modalOpen && activeModal && (
           <motion.div
             initial={{ opacity: 0, y: "-10%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-10%" }}
             transition={{ duration: 0.3 }}
-            className=" inset-0 bg-black bg-opacity-50 flex items-center justify-center relative"
+            className="inset-0 bg-black bg-opacity-50 flex items-center justify-center relative"
           >
-            <div className="bg-white p-6 rounded-lg shadow-lg w-[80%]  text-center absolute top-10">
-              <button
-                onClick={closeModal}
-                className="absolute top-3 right-3 text-xl text-gray-500 hover:text-red-500 transition"
-              >
-                <IoMdClose />
-              </button>
+            <div ref={modalRef} className="bg-white p-6 rounded-lg shadow-lg w-[70%] text-center absolute top-0">
+            
 
-              {/* Different UI for each modal */}
-              {activeModal === "Solution" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-indigo-600 mb-4">Our Solution</h2>
-                  <p className="text-gray-700 mb-4">
-                    We provide AI-driven solutions tailored for your business.
-                  </p>
-                  <button className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">
-                    Learn More
-                  </button>
-                </div>
-              )}
-
-              {activeModal === "Platform" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-blue-600 mb-4">Our Platform</h2>
-                  <img src="/platform-image.png" alt="Platform" className="mb-4 rounded-lg shadow-md" />
-                  <p className="text-gray-700">A seamless and scalable hiring experience.</p>
-                </div>
-              )}
-
-              {activeModal === "Resources" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-green-600 mb-4">Resources</h2>
-                  <ul className="list-disc list-inside text-left text-gray-700">
-                    <li>Case Studies</li>
-                    <li>Whitepapers</li>
-                    <li>Webinars</li>
-                  </ul>
-                </div>
-              )}
-
-              {activeModal === "Talent" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-orange-600 mb-4">Hire Top Talent</h2>
-                  <p className="text-gray-700 mb-4">
-                    Find the best professionals for your business needs.
-                  </p>
-                  <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600">
-                    Start Hiring
-                  </button>
-                </div>
-              )}
-
-              {activeModal === "About" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-red-600 mb-4">About Us</h2>
-                  <p className="text-gray-700">We are dedicated to revolutionizing talent acquisition.</p>
-                </div>
-              )}
+              {/* Dynamic Content Rendering */}
+              {activeModal.content}
             </div>
           </motion.div>
         )}
@@ -214,3 +214,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
