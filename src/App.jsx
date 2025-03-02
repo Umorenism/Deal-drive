@@ -41,7 +41,7 @@ import Footer from "./component/Footer";
 import Signup from "./component/Signup";
 import Success from "./component/Success";
 import ScrollToTop from "./component/ScrollTop";
-import ChatComponent from "./component/Chat";
+
 
 const AppLayout = () => {
   const location = useLocation();
@@ -60,7 +60,7 @@ const AppLayout = () => {
         <Route path="/hire" element={<HireComponent />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/success" element={<Success />} />
-        <Route path="/chat" element={<ChatComponent />} />
+        
       </Routes>
       {!shouldHideLayout && <Footer />}
     </>
