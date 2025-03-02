@@ -17,7 +17,7 @@ const Tech = () => {
     <div className="flex w-full items-center p-5 justify-center bg-white">
       <div className="max-w-[1100px] w-full flex flex-col md:flex-row items-center mt-5">
        
-        <div className="text-start">
+        <div className="text-start mb-3">
           <p className="text-lg font-semibold text-gray-700">
             Tech leaders trust
           </p>
