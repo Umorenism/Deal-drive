@@ -7,10 +7,12 @@ import HireComponent from "./component/HireComponent";
 import Footer from "./component/Footer";
 import Signup from "./component/Signup";
 import Success from "./component/Success";
+import ScrollToTop from "./component/ScrollTop";
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

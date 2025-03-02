@@ -165,6 +165,7 @@ useEffect(() => {
   }
 const HireClose=()=>{
   setMenuOpen(false)
+  window.scrollTo(0, 0);
 }
   return (
     <header className={`w-full fixed top-0 z-10 transition-all duration-300 ${scrolling ? "bg-white shadow-md text-blue-500" : "bg-transparent"}`}> 
