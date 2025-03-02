@@ -146,7 +146,7 @@ const HomePage = () => {
 
       {/* Chat Modal */}
       {isChatOpen && (
-        <div className="fixed mt-20 sm:mt-0 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed mt-20 sm:mt-0 inset-0 bg-black bg-opacity-50 flex items-center justify-center sm:justify-end sm:mr-4">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[500px] relative">
              {/* Chat Header (Fixed) */}
                   <div className=" absolute top-2 left-2 text-gray-600 hover:text-gray-900">
