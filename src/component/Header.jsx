@@ -237,7 +237,7 @@ const HireClose=()=>{
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -10 }}
     transition={{ duration: 0.3 }} 
-    className="absolute top-12 right-0 z-10 w-[500px] md:w-[320px] bg-white shadow-lg rounded-lg p-3 flex items-center border border-gray-300"
+    className="absolute top-12 right-0 z-10 w-[450px] md:w-[320px] bg-white shadow-lg rounded-lg p-3 flex items-center border border-gray-300"
   >
     {/* Search Icon */}
     <IoSearch className="text-gray-500 text-xl" />
