@@ -55,14 +55,14 @@ const HomePage = () => {
    }, []);
    const stats = [
         { value: 150000, description: "Top-rated, highly skilled global talent pool" },
-        { value: 80000, description: "Cost savings per talent hired through Andela" },
+        { value: 80000, description: "Cost savings per talent hired" },
        { value: 66, description: "Faster time to hire" },
         { value: 33, description: "Faster project delivery" },
      ];
 
   return (
     <>
-    <div className="bg-slate-600  min-h-screen relative overflow-hidden">
+    <div className=" flex items-center justify-center min-h-screen relative overflow-hidden">
       {/* Video for Desktop */}
       {!isMobile ? (
         <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
@@ -78,7 +78,8 @@ const HomePage = () => {
       )}
 
       {/* Overlay with Content */}
-      <div className="absolute inset-0  flex-col bg-black bg-opacity-50 flex items-center justify-center text-white p-6">
+  
+      {/* <div className="absolute inset-0  flex-col bg-black bg-opacity-50 flex items-center justify-center text-white p-6">
         <div className="text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-10 md:w-[60%] md:text-start mt-20 md:mt-10">
           Adaptive Hiring Lets You Put Every Project on the Front Burner
@@ -110,7 +111,44 @@ const HomePage = () => {
          ))}
           </div>
         </div>
+      </div> */}
+
+
+<div className="container  mx-auto px-4">
+  <div className="absolute inset-0 flex-col bg-black bg-opacity-50 flex items-center justify-center text-white p-6">
+    <div className="text-center">
+      <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-10 md:w-[60%] md:text-start mt-20 md:mt-10">
+        Adaptive Hiring Lets You Put Every Project on the Front Burner
+      </h1>
+      <p className="text-lg md:text-xl mb-8 w-full md:text-start md:w-[60%]">
+        There are more than 150,000 highly skilled tech professionals on our roster. Most in largely untapped markets. Ready to be placed quickly and effectively.
+      </p>
+      <div className="w-full text-start gap-3 flex items-center">
+        <button className="px-6 py-3 flex gap-2 bg-indigo-500 rounded-md text-lg font-bold hover:bg-indigo-600 transition">
+          Hire Talent
+        </button>
+        <p>What is adaptive Hiring</p>
       </div>
+    </div>
+    <div className="sm:mt-44 mt-10 container flex items-center justify-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 w-full md:max-w-[1400px] gap-3">
+        {stats.map((stat, index) => (
+          <div key={index} className="flex items-center mb-4 gap-4">
+            <div className="w-1 h-16 bg-slate-100"></div>
+            <div className='w-full'>
+              <h1 className="text-2xl md:text-3xl font-bold text-white">
+                {counts[index].toLocaleString()} {index === 1 ? "$" : ""}
+              </h1>
+              <h2 className="text-sm text-gray-300">{stat.description}</h2>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+     
     </div>
     <Tech/>
     <Hire/>

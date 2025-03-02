@@ -22,7 +22,7 @@ const Tech = () => {
             Tech leaders trust
           </p>
           <p className="text-lg font-semibold text-gray-700">
-            Andela to quickly source
+            Dealdrive to quickly source
           </p>
           <p className="text-lg font-semibold text-gray-700">
             qualified talent
